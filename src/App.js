@@ -8,4 +8,5 @@ function App() {
   );
 }
 
+console.log('asdsd');
 export default App;
