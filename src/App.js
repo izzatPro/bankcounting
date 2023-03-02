@@ -1,12 +1,58 @@
 import "./App.scss";
+import { Component } from "react/cjs/react.production.min";
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      count : 0
+    }
+  }
 
-function App() {
-  return (
-    <div>
-      <h1>Hello World!!!</h1>
-    </div>
-  );
+   minus = () =>{
+    this.setState({
+      count: this.state.count - 1
+    })
+  }
+  reset = () =>{
+    this.setState({
+      count: 0
+    })
+  }
+  plus = () =>{
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+
+
+  render(){
+
+    let color = "#fff";
+    if(this.state.count > 0){
+      color = 'yellow'
+    } else if (this.state.count < 0){
+      color = 'red'
+    } else{
+      color = 'white'
+    }
+
+    return (
+      <section className="counter-sec --flex-center">
+        <div className="container counter --card --center-all">
+          <h1 className=" --text-light">React counter App</h1>
+          <p className="count --my --text-md --text-light --fw-bold" style={{
+            color:color
+          }}>{this.state.count}</p>
+          <div className="buttons">
+              <button className="--btn --btn-danger" onClick={this.minus} >- Subtract</button>
+              <button className="--btn" onClick={this.reset}>!Reset</button>
+              <button className="--btn --btn-success" onClick={this.plus}>+ Add</button>
+          </div>
+        </div>
+      </section>
+      );
+  }
+  
+ 
 }
-
-console.log('asdsd');
 export default App;
